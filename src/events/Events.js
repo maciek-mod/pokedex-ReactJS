@@ -2,6 +2,8 @@ import React from 'react';
 import fetch from 'isomorphic-fetch';
 import EventItem from './eventsItem';
 import EventFilter from './eventsFilter';
+import Loading from '../common/loading';
+
 
 
 class Events extends React.Component {
@@ -9,7 +11,8 @@ class Events extends React.Component {
         super(props);
         this.state = {
             data: [],
-            filter: ''
+            filter: '',
+            isLoading: true
         };
     }
 
@@ -18,7 +21,8 @@ class Events extends React.Component {
         .then(response => response.json())
         .then(data => {
             this.setState({
-                data: data.pokemon_entries
+                data: data.pokemon_entries,
+                isLoading: false
             });
             console.log(data.pokemon_entries);
         });
@@ -42,14 +46,16 @@ class Events extends React.Component {
     render() {
         return (<div>
             <EventFilter onFindPokemon={this.onFindPokemon.bind(this)} filter={this.state.filter} />
-            <ul>
-                {this.state.data.map(item => {
-                    if (item.pokemon_species.name.indexOf(this.state.filter) > -1) {
-                        return <EventItem onShowDetails={this.onShowDetails.bind(this) } item={item} key={item.entry_number} />
-                    }
-                    return null;
-                })}
-            </ul>
+            <Loading isLoading={this.state.isLoading}>
+                <ul>
+                    {this.state.data.map(item => {
+                        if (item.pokemon_species.name.indexOf(this.state.filter) > -1) {
+                            return <EventItem onShowDetails={this.onShowDetails.bind(this) } item={item} key={item.entry_number} />
+                        }
+                        return null;
+                    })}
+                </ul>
+            </Loading>
         </div>);
     }
 };
