@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Events from './events/Events';
+import App from './app';
 
-ReactDOM.render(<Events/> , document.getElementById('root'));
+
+ReactDOM.render(<App/>, document.getElementById('root'));

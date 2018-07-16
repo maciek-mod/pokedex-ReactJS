@@ -3,6 +3,8 @@ import fetch from 'isomorphic-fetch';
 import EventItem from './eventsItem';
 import EventFilter from './eventsFilter';
 import Loading from '../common/loading';
+import * as constants from '../constants';
+
 
 
 
@@ -24,7 +26,6 @@ class Events extends React.Component {
                 data: data.pokemon_entries,
                 isLoading: false
             });
-            console.log(data.pokemon_entries);
         });
     }
 
