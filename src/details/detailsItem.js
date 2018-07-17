@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const DetailsPokemon = (props) => {
-    console.log(props.moves);
     return(
         <div>
             <h2>Name</h2>
@@ -45,6 +44,7 @@ DetailsPokemon.propTypes = {
   types: PropTypes.array.isRequired,
   weight: PropTypes.number,
   abilities: PropTypes.array.isRequired,
+  moves: PropTypes.array.isRequired,
   sprites: PropTypes.object.isRequired,
   capitalizeFirstLetter: PropTypes.func.isRequired,
   numberWithCommas: PropTypes.func.isRequired
