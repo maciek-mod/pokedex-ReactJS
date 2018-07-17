@@ -1,8 +1,7 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch';
-import * as constants from '../constants';
+import DetailsPokemon from './detailsItem';
 
-console.log(constants.LIST_NAME);
 
 class Details extends React.Component {
     constructor(props) {
@@ -14,7 +13,6 @@ class Details extends React.Component {
     }
     getIdEvent() {
         const id = this.props.match.params.eventId;
-        // const event = events.find(item => item.id === parseInt(id, 10));
         return id;
     }
 
@@ -27,22 +25,15 @@ class Details extends React.Component {
     render() {
         const {abilities, name, sprites, weight, types} = this.state.pokemon;
         if (this.state.isLoadingDetails !== true) {
-            console.log(sprites);
-            return (<div>
-                <p>{name}</p>
-                <p>{weight}</p>
-
-                {types.map( (item, key) => {
-                        return <p key={key}>{item.type.name}</p>;
-                })}
-
-                {sprites.back_default && <img src={sprites.back_default} title={name} alt={name}/>}
-                {sprites.front_default && <img src={sprites.front_default} title={name} alt={name}/>}
-
-                {sprites.back_shiny && <img src={sprites.back_shiny} title={name} alt={name}/>}
-                {sprites.front_shiny && <img src={sprites.front_shiny} title={name} alt={name}/>}
-
-            </div>)
+            console.log(abilities);
+            return (
+                <DetailsPokemon
+                    name={name}
+                    weight={weight}
+                    abilities={abilities}
+                    types={types}
+                    sprites={sprites}
+                />)
         } else {
             return (<p>Loading</p>);
         }
