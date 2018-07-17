@@ -23,9 +23,15 @@ class Events extends React.Component {
                 data: data.pokemon_entries,
                 isLoading: false
             });
+        }).catch(function(error) {
+            console.log(error);
         });
+        document.getElementsByTagName('body')[0].className = 'page-list';
     }
 
+    componentWillUnmount() {
+        document.getElementsByTagName('body')[0].className = '';
+    }
     onFindPokemon(event){
         event.preventDefault();
         const value = event.currentTarget.value;

@@ -16,16 +16,37 @@ class Details extends React.Component {
         return id;
     }
 
+
+
     componentDidMount() {
-        fetch('https://pokeapi.co/api/v2/pokemon/' + this.getIdEvent() + '/').then(response => response.json()).then(data => {
+        fetch('https://pokeapi.co/api/v2/pokemon/' + this.getIdEvent() + '/')
+        .then(response => response.json())
+        .then(data => {
             this.setState({pokemon: data, isLoadingDetails: false});
+        }).catch(function(error) {
+            console.log(error);
         });
+        document.getElementsByTagName('body')[0].className = 'page-details';
+    }
+
+    componentWillUnmount() {
+        document.getElementsByTagName('body')[0].className = '';
+    }
+
+    capitalizeFirstLetter(string) {
+        var capitalizeString = string.charAt(0).toUpperCase() + string.slice(1);
+        if (/-/g.test(capitalizeString)) {
+            capitalizeString = capitalizeString.replace(/-/g, ' ');
+        }
+        return capitalizeString;
+    }
+    numberWithCommas(number) {
+        return number / 10;
     }
 
     render() {
-        const {abilities, name, sprites, weight, types} = this.state.pokemon;
+        const {abilities, name, sprites, weight, types, moves} = this.state.pokemon;
         if (this.state.isLoadingDetails !== true) {
-            console.log(abilities);
             return (
                 <DetailsPokemon
                     name={name}
@@ -33,6 +54,9 @@ class Details extends React.Component {
                     abilities={abilities}
                     types={types}
                     sprites={sprites}
+                    moves={moves}
+                    capitalizeFirstLetter={this.capitalizeFirstLetter.bind(this)}
+                    numberWithCommas={this.numberWithCommas.bind(this)}
                 />)
         } else {
             return (<p>Loading</p>);
