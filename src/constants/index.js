@@ -1,1 +1,5 @@
+// Events actions
 export const EVENTS_FILTER = 'EVENTS_FILTER';
+export const EVENTS_GET_START = 'EVENTS_GET_START';
+export const EVENTS_GET_SUCCESS = 'EVENTS_GET_SUCCESS';
+export const EVENTS_GET_ERROR = 'EVENTS_GET_ERROR';

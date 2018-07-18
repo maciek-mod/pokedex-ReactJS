@@ -3,14 +3,20 @@ import * as constants from '../constants';
 const initialState = {
     data: [],
     filter: '',
-    isLoading: true
+    isLoading: false,
+    isError: false
 };
 
-export function eventsReducers(state = initialState, action){ 
+export function eventsReducers(state = initialState, action){
     switch (action.type) {
         case constants.EVENTS_FILTER:
             return { ...state, filter: action.payload.filter};
-            break;
+        case constants.EVENTS_GET_START:
+            return {...state, isLoading: true, filter: ''};
+        case constants.EVENTS_GET_SUCCESS:
+            return {...state, isLoading: false, data: action.payload.data};
+        case constants.EVENTS_GET_ERROR:
+            return {...state, isLoading: false, isError: true};
         default:
             return state;
 
