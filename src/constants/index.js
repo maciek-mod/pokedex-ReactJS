@@ -1,1 +1,1 @@
-export const LIST_NAME = {};
+export const EVENTS_FILTER = 'EVENTS_FILTER';

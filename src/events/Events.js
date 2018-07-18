@@ -3,6 +3,8 @@ import fetch from 'isomorphic-fetch';
 import EventItem from './eventsItem';
 import EventFilter from './eventsFilter';
 import Loading from '../common/loading';
+import { connect } from 'react-redux';
+import * as actions from '../actions/events';
 
 
 class Events extends React.Component {
@@ -10,7 +12,6 @@ class Events extends React.Component {
         super(props);
         this.state = {
             data: [],
-            filter: '',
             isLoading: true
         };
     }
@@ -35,9 +36,7 @@ class Events extends React.Component {
     onFindPokemon(event){
         event.preventDefault();
         const value = event.currentTarget.value;
-        this.setState({
-            filter: value
-        });
+        this.props.filterEvents(value);
     }
     onShowDetails(event){
         event.preventDefault();
@@ -49,11 +48,11 @@ class Events extends React.Component {
 
     render() {
         return (<div>
-            <EventFilter onFindPokemon={this.onFindPokemon.bind(this)} filter={this.state.filter} />
+            <EventFilter onFindPokemon={this.onFindPokemon.bind(this)} filter={this.props.filter} />
             <Loading isLoading={this.state.isLoading}>
                 <ul>
                     {this.state.data.map(item => {
-                        if (item.pokemon_species.name.indexOf(this.state.filter) > -1) {
+                        if (item.pokemon_species.name.indexOf(this.props.filter) > -1) {
                             return <EventItem onShowDetails={this.onShowDetails.bind(this) } item={item} key={item.entry_number} />
                         }
                         return null;
@@ -64,4 +63,16 @@ class Events extends React.Component {
     }
 };
 
-export default Events;
+const mapStateToProps = (state) => {
+    return {
+        ...state
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        filterEvents: (filter) => dispatch(actions.filterEvents(filter))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Events);
