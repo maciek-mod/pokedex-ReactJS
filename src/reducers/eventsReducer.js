@@ -7,7 +7,7 @@ const initialState = {
     isError: false
 };
 
-export function eventsReducers(state = initialState, action){
+export function eventsReducer(state = initialState, action){
     switch (action.type) {
         case constants.EVENTS_FILTER:
             return { ...state, filter: action.payload.filter};

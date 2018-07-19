@@ -8,24 +8,8 @@ import * as actions from '../actions/events';
 
 
 class Events extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         data: []
-    //     };
-    // }
 
     componentDidMount() {
-        // fetch('https://pokeapi.co/api/v2/pokedex/1/')
-        // .then(response => response.json())
-        // .then(data => {
-        //     this.setState({
-        //         data: data.pokemon_entries,
-        //         isLoading: false
-        //     });
-        // }).catch(function(error) {
-        //     console.log(error);
-        // });
         this.props.getEvents();
         document.getElementsByTagName('body')[0].className = 'page-list';
     }
@@ -48,11 +32,11 @@ class Events extends React.Component {
 
     render() {
         return (<div>
-            <EventFilter onFindPokemon={this.onFindPokemon.bind(this)} filter={this.props.filter} />
-            <Loading isLoading={this.props.isLoading}>
+            <EventFilter onFindPokemon={this.onFindPokemon.bind(this)} filter={this.props.eventsStore.filter} />
+            <Loading isLoading={this.props.eventsStore.isLoading}>
                 <ul>
-                    {this.props.data.map(item => {
-                        if (item.pokemon_species.name.indexOf(this.props.filter) > -1) {
+                    {this.props.eventsStore.data.map(item => {
+                        if (item.pokemon_species.name.indexOf(this.props.eventsStore.filter) > -1) {
                             return <EventItem onShowDetails={this.onShowDetails.bind(this) } item={item} key={item.entry_number} />
                         }
                         return null;

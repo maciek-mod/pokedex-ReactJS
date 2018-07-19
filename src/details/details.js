@@ -1,16 +1,9 @@
 import React from 'react';
-import fetch from 'isomorphic-fetch';
 import DetailsPokemon from './detailsItem';
-
-
+import { connect } from 'react-redux';
+import * as actions from '../actions/details';
 class Details extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            pokemon: {},
-            isLoadingDetails: true
-        };
-    }
+
     getIdEvent() {
         const id = this.props.match.params.eventId;
         return id;
@@ -19,13 +12,15 @@ class Details extends React.Component {
 
 
     componentDidMount() {
-        fetch('https://pokeapi.co/api/v2/pokemon/' + this.getIdEvent() + '/')
-        .then(response => response.json())
-        .then(data => {
-            this.setState({pokemon: data, isLoadingDetails: false});
-        }).catch(function(error) {
-            console.log(error);
-        });
+        // fetch('https://pokeapi.co/api/v2/pokemon/' + this.getIdEvent() + '/')
+        // .then(response => response.json())
+        // .then(data => {
+        //     this.setState({pokemon: data, isLoadingDetails: false});
+        // }).catch(function(error) {
+        //     console.log(error);
+        // });
+        const idPokemon = this.getIdEvent();
+        this.props.getDetails(idPokemon);
         document.getElementsByTagName('body')[0].className = 'page-details';
     }
 
@@ -45,8 +40,8 @@ class Details extends React.Component {
     }
 
     render() {
-        const {abilities, name, sprites, weight, types, moves} = this.state.pokemon;
-        if (this.state.isLoadingDetails !== true) {
+        if (this.props.detailsStore.isLoadingDetails === false) {
+            const {abilities, name, sprites, weight, types, moves} = this.props.detailsStore.pokemon;
             return (
                 <DetailsPokemon
                     name={name}
@@ -65,4 +60,18 @@ class Details extends React.Component {
     }
 }
 
-export default Details;
+
+const mapStateToProps = (state) => {
+    return {
+        ...state
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getDetails: (idPokemon) => dispatch(actions.getDetails(idPokemon))
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Details);
