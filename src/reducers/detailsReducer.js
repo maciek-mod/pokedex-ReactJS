@@ -2,18 +2,18 @@ import * as constants from '../constants';
 
 const initialState = {
     pokemon: null,
-    isLoadingDetails: true,
-    isErrorDetails: false
+    isLoading: true,
+    isError: false
 };
 
 export function detailsReducer(state = initialState, action){
     switch (action.type) {
         case constants.DETAILS_GET_START:
-            return {...state, isLoadingDetails: true };
+            return {...state, isLoading: true };
         case constants.DETAILS_GET_SUCCESS:
-            return {...state, isLoadingDetails: false, pokemon: action.payload.data};
+            return {...state, isLoading: false, pokemon: action.payload.data};
         case constants.DETAILS_GET_ERROR:
-            return {...state, isLoadingDetails: false, isErrorDetails: false};
+            return {...state, isLoading: false, isError: true};
         default:
             return state;
 

@@ -43,7 +43,7 @@ class Events extends React.Component {
                     })}
                 </ul>
             </Loading>
-            <ErrorItem isError={this.props.isError} />
+            <ErrorItem isError={this.props.eventsStore.isError} />
         </div>);
     }
 };

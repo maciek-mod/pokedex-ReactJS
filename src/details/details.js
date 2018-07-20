@@ -2,6 +2,7 @@ import React from 'react';
 import DetailsPokemon from './detailsItem';
 import { connect } from 'react-redux';
 import * as actions from '../actions/details';
+
 class Details extends React.Component {
 
     getIdEvent() {
@@ -40,23 +41,26 @@ class Details extends React.Component {
     }
 
     render() {
-        if (this.props.detailsStore.isLoadingDetails === false) {
-            const {abilities, name, sprites, weight, types, moves} = this.props.detailsStore.pokemon;
+        if (this.props.detailsStore.isLoading === false) {
+            const {abilities, name, sprites, weight, types, moves, id} = this.props.detailsStore.pokemon;
             return (
-                <DetailsPokemon
-                    name={name}
-                    weight={weight}
-                    abilities={abilities}
-                    types={types}
-                    sprites={sprites}
-                    moves={moves}
-                    capitalizeFirstLetter={this.capitalizeFirstLetter.bind(this)}
-                    numberWithCommas={this.numberWithCommas.bind(this)}
-                />)
+                <div>
+                    <DetailsPokemon
+                        name={name}
+                        id ={id}
+                        weight={weight}
+                        abilities={abilities}
+                        types={types}
+                        sprites={sprites}
+                        moves={moves}
+                        capitalizeFirstLetter={this.capitalizeFirstLetter.bind(this)}
+                        numberWithCommas={this.numberWithCommas.bind(this)}
+                    />
+                </div>
+            )
         } else {
             return (<p>Loading</p>);
         }
-
     }
 }
 

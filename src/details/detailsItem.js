@@ -6,6 +6,8 @@ const DetailsPokemon = (props) => {
         <div>
             <h2>Name</h2>
             <p>{props.capitalizeFirstLetter(props.name)}</p>
+            <h2>Number</h2>
+            <p>{props.id}</p>
             <h2>Weight</h2>
             <p>{props.numberWithCommas(props.weight)} kg</p>
             <h2>Type</h2>
@@ -43,6 +45,7 @@ DetailsPokemon.propTypes = {
   name: PropTypes.string.isRequired,
   types: PropTypes.array.isRequired,
   weight: PropTypes.number,
+  id: PropTypes.number.isRequired,
   abilities: PropTypes.array.isRequired,
   moves: PropTypes.array.isRequired,
   sprites: PropTypes.object.isRequired,
