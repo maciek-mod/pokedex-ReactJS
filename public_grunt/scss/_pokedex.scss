@@ -1,0 +1,86 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    #root{
+        width: 100vw;
+        height: 100vh;
+        overflow: auto;
+        position: relative;
+        @media only screen and (min-width: 768px){
+            width: 300px;
+            height: 100%;
+            max-height: 500px;
+        }
+        .pokemon_list_container{
+            position: relative;
+            top: -43px;
+            -webkit-transition: all .5s ease-in-out;
+            -moz-transition: all .5s ease-in-out;
+            -o-transition: all .5s ease-in-out;
+            transition: all .5s ease-in-out;
+            &.slide_down{
+                top: 0px;
+            }
+            .search_pokemon{
+                position: sticky;
+                top: 0;
+                left: 0;
+                -webkit-transition: all .5s ease-in-out;
+                -moz-transition: all .5s ease-in-out;
+                -o-transition: all .5s ease-in-out;
+                transition: all .5s ease-in-out;
+                &.hidden{
+                    top: -43px;
+                }
+                form{
+                    width: 100%;
+                    input{
+                        width: 100%;
+                        padding: 10px;
+                        font-size: 16px;
+                        height: 43px;
+                    }
+                }
+                .search_icon{
+                    position: absolute;
+                    right: 0;
+                    width: 30px;
+                    height: 30px;
+                    color: white;
+                    background: blue;
+                    border-radius: 50%;
+                    text-align: center;
+                    line-height: 30px;
+                    font-size: 20px;
+                    font-weight: bold;
+                    background-image: url(../img/icon/search.png);
+                    background-size: 20px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    cursor: pointer;
+                }
+            }
+            .pokemon_list{
+                li{
+                    a{
+                        display: inline-block;
+                        padding: 20px 10px;
+                        width: 100%;
+                        font-size: 16px;
+                        background: rgba(255,0,0, .7);
+                        text-decoration: none;
+                        color: white;
+                    }
+                    &:nth-of-type(2n){
+                        a{
+                            background: rgba(0,128,0, .7);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

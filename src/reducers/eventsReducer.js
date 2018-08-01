@@ -4,7 +4,8 @@ const initialState = {
     data: [],
     filter: '',
     isLoading: false,
-    isError: false
+    isError: false,
+    toggleClass: false
 };
 
 export function eventsReducer(state = initialState, action){

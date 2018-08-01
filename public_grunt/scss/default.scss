@@ -1,0 +1,46 @@
+@import "_reset.scss";
+@import "_mixin.scss";
+@import "_font.scss";
+@import "_general.scss";
+@import "_pokedex.scss";
+
+
+body{
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 8px;
+
+    @media only screen and (min-width: 1024px){
+        font-size: 9px;
+    }
+    @media only screen and (min-width: 1600px){
+        font-size: 10px;
+    }
+    &.no_scroll{
+        overflow: hidden;
+    }
+
+}
+
+.container {
+    width: 96%;
+    max-width: 1170px;
+    margin: 0 auto;
+    // background: #ff00004f;
+    @media screen and (min-width: 1440px) {
+        width: 100%;
+    }
+}
+* {
+    box-sizing: border-box;
+}
+.no-padding{
+    padding: 0;
+}
+
+.page-list{
+    // background: rgba(255,0,0, .25);
+}
+.page-details{
+    // background: rgba(0,255,0, .25);
+}
