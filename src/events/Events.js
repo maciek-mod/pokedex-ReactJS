@@ -46,25 +46,30 @@ class Events extends React.Component {
     }
 
     render() {
-        return (<div className={"pokemon_list_container" + " " + (this.props.eventsStore.toggleClass ? 'slide_down' : '')}>
-            <div className={"search_pokemon" + " " + (this.props.eventsStore.toggleClass ? '' : 'hidden')}>
-                <EventFilter onFindPokemon={this.onFindPokemon.bind(this)} filter={this.props.eventsStore.filter}/>
-                <div onClick={this.toggleClass.bind(this)} className="search_icon"></div>
-            </div>
+        return (
             <Loading isLoading={this.props.eventsStore.isLoading}>
-                <ul className="pokemon_list">
-                    {
-                        this.props.eventsStore.data.map(item => {
-                            if (item.pokemon_species.name.indexOf(this.props.eventsStore.filter) > -1) {
-                                return <EventItem onShowDetails={this.onShowDetails.bind(this)} capitalizeFirstLetter={this.capitalizeFirstLetter.bind(this)} item={item} key={item.entry_number}/>
-                            }
-                            return null;
-                        })
-                    }
-                </ul>
+                <div className={"pokemon_list_container" + " " + (this.props.eventsStore.toggleClass? 'slide_down': '')}>
+                    <div className={"search_pokemon" + " " + (
+                            this.props.eventsStore.toggleClass
+                            ? ''
+                            : 'hidden')}>
+                        <EventFilter onFindPokemon={this.onFindPokemon.bind(this)} filter={this.props.eventsStore.filter}/>
+                        <div onClick={this.toggleClass.bind(this)} className="search_icon"></div>
+                    </div>
+                    <ul className="pokemon_list">
+                        {
+                            this.props.eventsStore.data.map(item => {
+                                if (item.pokemon_species.name.indexOf(this.props.eventsStore.filter) > -1) {
+                                    return <EventItem onShowDetails={this.onShowDetails.bind(this)} capitalizeFirstLetter={this.capitalizeFirstLetter.bind(this)} item={item} key={item.entry_number}/>
+                                }
+                                return null;
+                            })
+                        }
+                    </ul>
+                </div>
+                {/* <ErrorItem isError={this.props.eventsStore.isError}/> */}
             </Loading>
-            <ErrorItem isError={this.props.eventsStore.isError}/>
-        </div>);
+        );
     }
 };
 

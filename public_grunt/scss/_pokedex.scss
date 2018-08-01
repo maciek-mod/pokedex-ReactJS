@@ -14,9 +14,15 @@ body{
             height: 100%;
             max-height: 500px;
         }
+        .pokedex_container{
+            height: 100%;
+            width: 100%;
+        }
         .pokemon_list_container{
+            height: 100%;
+            width: 100%;
             position: relative;
-            top: -43px;
+            top: -53px;
             -webkit-transition: all .5s ease-in-out;
             -moz-transition: all .5s ease-in-out;
             -o-transition: all .5s ease-in-out;
@@ -33,22 +39,22 @@ body{
                 -o-transition: all .5s ease-in-out;
                 transition: all .5s ease-in-out;
                 &.hidden{
-                    top: -43px;
+                    top: -53px;
                 }
                 form{
                     width: 100%;
                     input{
                         width: 100%;
-                        padding: 10px;
+                        padding: 10px 15px;
                         font-size: 16px;
-                        height: 43px;
+                        height: 53px;
                     }
                 }
                 .search_icon{
                     position: absolute;
                     right: 0;
-                    width: 30px;
-                    height: 30px;
+                    width: 40px;
+                    height: 40px;
                     color: white;
                     background: blue;
                     border-radius: 50%;
@@ -57,7 +63,7 @@ body{
                     font-size: 20px;
                     font-weight: bold;
                     background-image: url(../img/icon/search.png);
-                    background-size: 20px;
+                    background-size: 25px;
                     background-repeat: no-repeat;
                     background-position: center;
                     cursor: pointer;

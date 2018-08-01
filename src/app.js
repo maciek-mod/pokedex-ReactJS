@@ -7,7 +7,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 const App = () => {
     return (<Router>
-        <div>
+        <div className="pokedex_container">
             <Switch>
                 <Route path="/about" render={(props) => <h1>a tititi hoooo!</h1>} />
                 <Route path="/details/:eventId" component={Details}/>
