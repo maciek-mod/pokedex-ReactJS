@@ -19,7 +19,8 @@ body{
             width: 100%;
         }
         .pokemon_list_container{
-            height: 100%;
+            height: auto;
+            min-height: 100%;
             width: 100%;
             position: relative;
             top: -53px;
