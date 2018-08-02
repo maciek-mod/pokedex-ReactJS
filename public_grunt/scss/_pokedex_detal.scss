@@ -1,0 +1,41 @@
+body.page-details{
+    .details_pokemon{
+        .item{
+            h2{
+                font-size: 16px;
+                color: white;
+                background: green;
+                padding: 10px;
+            }
+            p{
+                font-size: 16px;
+                background: red;
+                padding: 10px;
+            }
+            .type ,.abilities ,.attact{
+                display: flex;
+                flex-wrap: wrap;
+                p{
+                    flex-basis: 50%;
+                    max-width: 50%;
+                    background: white;
+                }
+            }
+            .sprites{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                h3{
+                    font-size: 14px;
+                    padding: 10px;
+                    flex-basis: 100%;
+                    max-width: 100%;
+                }
+                img{
+                    max-width: 96px;
+
+                }
+            }
+        }
+    }
+}

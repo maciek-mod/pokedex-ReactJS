@@ -1,89 +1,139 @@
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     height: 100vh;
-    #root{
+
+    #root {
         width: 100vw;
         height: 100vh;
         overflow: auto;
         position: relative;
-        @media only screen and (min-width: 768px){
+        @media only screen and (min-width: 768px) {
             width: 300px;
             height: 100%;
             max-height: 500px;
         }
-        .pokedex_container{
+
+        .pokedex_container {
             height: 100%;
             width: 100%;
         }
-        .pokemon_list_container{
+
+        .pokemon_list_container {
             height: auto;
             min-height: 100%;
             width: 100%;
             position: relative;
             top: -53px;
-            -webkit-transition: all .5s ease-in-out;
-            -moz-transition: all .5s ease-in-out;
-            -o-transition: all .5s ease-in-out;
-            transition: all .5s ease-in-out;
-            &.slide_down{
-                top: 0px;
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+
+            &.slide_down {
+                top: 0;
             }
-            .search_pokemon{
+
+            .search_pokemon {
+                background: #f05759;
                 position: sticky;
                 top: 0;
                 left: 0;
-                -webkit-transition: all .5s ease-in-out;
-                -moz-transition: all .5s ease-in-out;
-                -o-transition: all .5s ease-in-out;
-                transition: all .5s ease-in-out;
-                &.hidden{
+                -webkit-transition: all 0.5s ease-in-out;
+                -moz-transition: all 0.5s ease-in-out;
+                -o-transition: all 0.5s ease-in-out;
+                transition: all 0.5s ease-in-out;
+
+                &.hidden {
                     top: -53px;
                 }
-                form{
+
+                form {
                     width: 100%;
-                    input{
+
+                    input {
                         width: 100%;
                         padding: 10px 15px;
                         font-size: 16px;
                         height: 53px;
                     }
                 }
-                .search_icon{
-                    position: absolute;
-                    right: 0;
-                    width: 40px;
-                    height: 40px;
-                    color: white;
-                    background: blue;
-                    border-radius: 50%;
-                    text-align: center;
-                    line-height: 30px;
-                    font-size: 20px;
-                    font-weight: bold;
-                    background-image: url(../img/icon/search.png);
-                    background-size: 25px;
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    cursor: pointer;
+
+                .search_pokemon_inner {
+                    display: flex;
+                    align-items: center;
+                    padding: 5px 0;
+
+                    .pokeball_icon {
+                        flex-basis: 17%;
+                        max-width: 17%;
+                        border-right: 1px solid white;
+                        align-self: stretch;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        img{
+                            max-width: 30px;
+                        }
+                    }
+
+                    h1 {
+                        flex: 1;
+                        font-size: 18px;
+                        color: white;
+                        text-align: center;
+                        font-weight: 700;
+                    }
+
+                    .search_icon {
+                        flex-basis: 17%;
+                        max-width: 17%;
+                        right: 0;
+                        height: 40px;
+                        color: white;
+                        text-align: center;
+                        line-height: 30px;
+                        font-size: 20px;
+                        font-weight: bold;
+                        background-image: url("../img/icon/search.png");
+                        background-size: 25px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        cursor: pointer;
+                        border-left: 1px solid white;
+
+                    }
                 }
             }
-            .pokemon_list{
-                li{
-                    a{
-                        display: inline-block;
-                        padding: 20px 10px;
+
+            .pokemon_list {
+                li {
+                    border-bottom: 1px solid grey;
+
+                    a {
+                        height: 55px;
                         width: 100%;
                         font-size: 16px;
-                        background: rgba(255,0,0, .7);
+                        // background: rgba(255,0,0, .7);
                         text-decoration: none;
-                        color: white;
-                    }
-                    &:nth-of-type(2n){
-                        a{
-                            background: rgba(0,128,0, .7);
+                        color: #484747;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        align-items: center;
+                        padding: 7px 0px;
+                        span {
+                            flex-basis: 17%;
+                            max-width: 17%;
+                            border-right: 1px solid grey;
+                            text-align: right;
+                            padding-right: 10px;
+                            margin-right: 10px;
+                            align-self: stretch;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
                         }
                     }
                 }

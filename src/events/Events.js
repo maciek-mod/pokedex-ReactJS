@@ -54,7 +54,13 @@ class Events extends React.Component {
                             ? ''
                             : 'hidden')}>
                         <EventFilter onFindPokemon={this.onFindPokemon.bind(this)} filter={this.props.eventsStore.filter}/>
-                        <div onClick={this.toggleClass.bind(this)} className="search_icon"></div>
+                        <div className="search_pokemon_inner">
+                            <div className="pokeball_icon">
+                                <img src="/img/pokeball.png" alt="pokebal"/> 
+                            </div>
+                            <h1>POKEDEX</h1>
+                            <div onClick={this.toggleClass.bind(this)} className="search_icon"></div>
+                        </div>
                     </div>
                     <ul className="pokemon_list">
                         {
