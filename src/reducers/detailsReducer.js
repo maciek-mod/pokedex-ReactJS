@@ -6,7 +6,8 @@ const initialState = {
     isError: false,
     toggleSprite: false,
     toggleAbilities: false,
-    toggleMoves: false
+    toggleMoves: false,
+    toggleStats: false
 };
 
 export function detailsReducer(state = initialState, action){

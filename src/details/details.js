@@ -48,18 +48,24 @@ class Details extends React.Component {
         } else {
             this.props.detailsStore[class_name] = true;
         }
-        if (this.props.detailsStore.toggleAbilities === true && class_name === "toggleMoves") {
+        if (class_name === "toggleMoves") {
             this.props.detailsStore.toggleAbilities = false;
+            this.props.detailsStore.toggleStats = false;
         }
-        if (this.props.detailsStore.toggleMoves === true && class_name === "toggleAbilities") {
+        if (class_name === "toggleAbilities") {
             this.props.detailsStore.toggleMoves = false;
+            this.props.detailsStore.toggleStats = false;
+        }
+        if (class_name === "toggleStats") {
+            this.props.detailsStore.toggleMoves = false;
+            this.props.detailsStore.toggleAbilities = false;
         }
         this.forceUpdate();
     }
 
     render() {
         if (this.props.detailsStore.isLoading === false) {
-            const {abilities, name, sprites, weight, types, moves, id, height} = this.props.detailsStore.pokemon;
+            const {abilities, name, sprites, weight, types, moves, id, height ,stats} = this.props.detailsStore.pokemon;
             const toggleClass = this.props.detailsStore;
             return (
                 <div>
@@ -72,6 +78,7 @@ class Details extends React.Component {
                         types={types}
                         sprites={sprites}
                         moves={moves}
+                        stats={stats}
                         toggleClassNew={this.props.detailsStore}
                         capitalizeFirstLetter={this.capitalizeFirstLetter.bind(this)}
                         numberWithCommas={this.numberWithCommas.bind(this)}
