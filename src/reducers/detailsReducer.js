@@ -3,7 +3,10 @@ import * as constants from '../constants';
 const initialState = {
     pokemon: null,
     isLoading: true,
-    isError: false
+    isError: false,
+    toggleSprite: false,
+    toggleAbilities: false,
+    toggleMoves: false
 };
 
 export function detailsReducer(state = initialState, action){

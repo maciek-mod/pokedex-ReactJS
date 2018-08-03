@@ -27,10 +27,7 @@ body {
             width: 100%;
             position: relative;
             top: -53px;
-            -webkit-transition: all 0.5s ease-in-out;
-            -moz-transition: all 0.5s ease-in-out;
-            -o-transition: all 0.5s ease-in-out;
-            transition: all 0.5s ease-in-out;
+            @include transition(0.5s);
 
             &.slide_down {
                 top: 0;
@@ -41,11 +38,7 @@ body {
                 position: sticky;
                 top: 0;
                 left: 0;
-                -webkit-transition: all 0.5s ease-in-out;
-                -moz-transition: all 0.5s ease-in-out;
-                -o-transition: all 0.5s ease-in-out;
-                transition: all 0.5s ease-in-out;
-
+                @include transition(0.5s);
                 &.hidden {
                     top: -53px;
                 }
@@ -90,7 +83,6 @@ body {
                     .search_icon {
                         flex-basis: 17%;
                         max-width: 17%;
-                        right: 0;
                         height: 40px;
                         color: white;
                         text-align: center;
@@ -110,7 +102,7 @@ body {
 
             .pokemon_list {
                 li {
-                    border-bottom: 1px solid grey;
+                    border-bottom: 1px solid #adacac;
 
                     a {
                         height: 55px;
@@ -126,7 +118,7 @@ body {
                         span {
                             flex-basis: 17%;
                             max-width: 17%;
-                            border-right: 1px solid grey;
+                            border-right: 1px solid #adacac;
                             text-align: right;
                             padding-right: 10px;
                             margin-right: 10px;

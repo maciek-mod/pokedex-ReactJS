@@ -10,8 +10,6 @@ class Details extends React.Component {
         return id;
     }
 
-
-
     componentDidMount() {
         // fetch('https://pokeapi.co/api/v2/pokemon/' + this.getIdEvent() + '/')
         // .then(response => response.json())
@@ -27,6 +25,10 @@ class Details extends React.Component {
 
     componentWillUnmount() {
         document.getElementsByTagName('body')[0].className = '';
+        this.props.detailsStore.toggleMoves = false;
+        this.props.detailsStore.toggleSprite = false;
+        this.props.detailsStore.toggleAbilities = false;
+
     }
 
     capitalizeFirstLetter(string) {
@@ -40,21 +42,40 @@ class Details extends React.Component {
         return number / 10;
     }
 
+    toggleClass(class_name) {
+        if (this.props.detailsStore[class_name] === true) {
+            this.props.detailsStore[class_name] = false;
+        } else {
+            this.props.detailsStore[class_name] = true;
+        }
+        if (this.props.detailsStore.toggleAbilities === true && class_name === "toggleMoves") {
+            this.props.detailsStore.toggleAbilities = false;
+        }
+        if (this.props.detailsStore.toggleMoves === true && class_name === "toggleAbilities") {
+            this.props.detailsStore.toggleMoves = false;
+        }
+        this.forceUpdate();
+    }
+
     render() {
         if (this.props.detailsStore.isLoading === false) {
-            const {abilities, name, sprites, weight, types, moves, id} = this.props.detailsStore.pokemon;
+            const {abilities, name, sprites, weight, types, moves, id, height} = this.props.detailsStore.pokemon;
+            const toggleClass = this.props.detailsStore;
             return (
                 <div>
                     <DetailsPokemon
                         name={name}
                         id ={id}
+                        height={height}
                         weight={weight}
                         abilities={abilities}
                         types={types}
                         sprites={sprites}
                         moves={moves}
+                        toggleClassNew={this.props.detailsStore}
                         capitalizeFirstLetter={this.capitalizeFirstLetter.bind(this)}
                         numberWithCommas={this.numberWithCommas.bind(this)}
+                        toggleClass={this.toggleClass.bind(this)}
                     />
                 </div>
             )

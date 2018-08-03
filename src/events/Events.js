@@ -15,6 +15,7 @@ class Events extends React.Component {
 
     componentWillUnmount() {
         document.getElementsByTagName('body')[0].className = '';
+        this.props.eventsStore.toggleClass = false;
     }
     onFindPokemon(event) {
         event.preventDefault();
@@ -56,7 +57,7 @@ class Events extends React.Component {
                         <EventFilter onFindPokemon={this.onFindPokemon.bind(this)} filter={this.props.eventsStore.filter}/>
                         <div className="search_pokemon_inner">
                             <div className="pokeball_icon">
-                                <img src="/img/pokeball.png" alt="pokebal"/> 
+                                <img src="/img/pokeball.png" alt="pokebal"/>
                             </div>
                             <h1>POKEDEX</h1>
                             <div onClick={this.toggleClass.bind(this)} className="search_icon"></div>
@@ -65,7 +66,7 @@ class Events extends React.Component {
                     <ul className="pokemon_list">
                         {
                             this.props.eventsStore.data.map(item => {
-                                if (item.pokemon_species.name.indexOf(this.props.eventsStore.filter) > -1) {
+                                if (item.pokemon_species.name.indexOf(this.props.eventsStore.filter.toLowerCase()) > -1) {
                                     return <EventItem onShowDetails={this.onShowDetails.bind(this)} capitalizeFirstLetter={this.capitalizeFirstLetter.bind(this)} item={item} key={item.entry_number}/>
                                 }
                                 return null;
