@@ -14,7 +14,7 @@ const DetailsPokemon = (props) => {
                     {props.sprites.front_default && <img src={props.sprites.front_default} title={props.name} alt={props.name}/>}
                     {props.sprites.back_default && <img src={props.sprites.back_default} title={props.name} alt={props.name}/>}
                 </div>
-                {props.sprites.back_shiny && <button onClick={props.toggleClass.bind(this, "toggleSprite")}>{props.toggleClassNew.toggleSprite ? "show shiny form" : "hide shiny form"}</button>}
+                {props.sprites.back_shiny && <button onClick={props.toggleClass.bind(this, "toggleSprite")}>{props.toggleClassNew.toggleSprite ? "Hide shiny form" : "Show shiny form"}</button>}
                 <div className={"shiny" + " " + (props.toggleClassNew.toggleSprite ? "show" : "hide")}>
                     {props.sprites.front_shiny && <img src={props.sprites.front_shiny} title={props.name} alt={props.name}/>}
                     {props.sprites.back_shiny && <img src={props.sprites.back_shiny} title={props.name} alt={props.name}/>}
