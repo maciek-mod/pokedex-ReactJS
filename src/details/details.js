@@ -28,6 +28,7 @@ class Details extends React.Component {
         this.props.detailsStore.toggleMoves = false;
         this.props.detailsStore.toggleSprite = false;
         this.props.detailsStore.toggleAbilities = false;
+        this.props.detailsStore.toggleStats = false;
 
     }
 
