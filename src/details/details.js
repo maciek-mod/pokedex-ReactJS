@@ -88,7 +88,13 @@ class Details extends React.Component {
                 </div>
             )
         } else {
-            return (<p>Loading</p>);
+            return (
+                <div className="loading_container">
+                    <div className="pokeball">
+                        <div className="pokeball__button"></div>
+                    </div>
+                </div>
+            );
         }
     }
 }
