@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 const DetailsPokemon = (props) => {
     return(
@@ -24,7 +24,9 @@ const DetailsPokemon = (props) => {
                 <h2>Type</h2>
                 <div className="type">
                     {props.types.map( (item, key) => {
-                            return <p key={key} className={item.type.name}>{props.capitalizeFirstLetter(item.type.name)}</p>;
+                            return (
+                                <Link key={key} to={"/type" + item.type.url.match(/\/\d+/)}><p className={item.type.name}>{props.capitalizeFirstLetter(item.type.name)}</p></Link>
+                            );
                     })}
                 </div>
             </div>
