@@ -34,6 +34,9 @@ class Events extends React.Component {
         if (/-/g.test(capitalizeString)) {
             capitalizeString = capitalizeString.replace(/-/g, ' ');
         }
+        if (/-/g.test(capitalizeString)) {
+            capitalizeString = capitalizeString.replace(/-/g, ' ');
+        }
         return capitalizeString;
     }
 

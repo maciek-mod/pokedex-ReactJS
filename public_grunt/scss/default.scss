@@ -5,16 +5,17 @@
 @import "_pokedex.scss";
 @import "_loading.scss";
 @import "_pokedex_detal.scss";
+@import "_pokedex_type.scss";
 
 
 body{
     background: #fbcd3c;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
-    font-size: 8px;
+    font-size: 10px;
 
     @media only screen and (min-width: 1024px){
-        font-size: 9px;
+        font-size: 10px;
     }
     @media only screen and (min-width: 1600px){
         font-size: 10px;

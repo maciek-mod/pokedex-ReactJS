@@ -14,7 +14,6 @@ class Type extends React.Component {
         const idType = this.getIdEvent();
         this.props.getType(idType);
         document.getElementsByTagName('body')[0].className = 'page-type';
-        return idType;
     }
 
     componentWillUnmount() {
@@ -25,13 +24,31 @@ class Type extends React.Component {
         // this.props.detailsStore.toggleStats = false;
 
     }
-    componentWillReceiveProps(){
-        // if (firstId !== this.props.match.params.typetId) {
-        //     console.log("inny LInk");
-        // }
+    capitalizeFirstLetter(string) {
+        var capitalizeString = string.charAt(0).toUpperCase() + string.slice(1);
+        if (/_/g.test(capitalizeString)) {
+            capitalizeString = capitalizeString.replace(/_/g, ' ');
+        }
+        if (/-/g.test(capitalizeString)) {
+            capitalizeString = capitalizeString.replace(/-/g, ' ');
+        }
+        return capitalizeString;
     }
-    onUpdateType(){
-        // window.location.reload();
+
+    goBack(){
+        window.history.back();
+    }
+
+    getNumberPokemon(numberPokemon){
+        var getNumber = numberPokemon;
+            getNumber = getNumber.match(/\/\d+/)[0].replace(/\//g, '');
+        if (getNumber < 10) {
+            return "00"+ getNumber;
+        } else if (getNumber < 100) {
+            return "0"+ getNumber;
+        } else{
+            return getNumber;
+        }
     }
 
 
@@ -44,7 +61,9 @@ class Type extends React.Component {
                         name={name}
                         damage_relations={damage_relations}
                         pokemon_type={pokemon}
-                        update={this.onUpdateType.bind(this)}
+                        capitalizeFirstLetter={this.capitalizeFirstLetter.bind(this)}
+                        goBack={this.goBack.bind(this)}
+                        getNumberPokemon={this.getNumberPokemon.bind(this)}
                     />
                 </div>
             );

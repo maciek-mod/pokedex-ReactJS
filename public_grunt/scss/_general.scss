@@ -1,0 +1,33 @@
+.title_pokemon_head {
+    background: #f05759;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+
+    a {
+        align-self: stretch;
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        flex-basis: 17%;
+        max-width: 17%;
+        border-right: 1px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            max-width: 20px;
+        }
+    }
+
+    h2 {
+        flex: 1;
+        font-size: 20px;
+        color: white;
+        font-weight: bold;
+        padding: 10px 30px;
+        text-transform: uppercase;
+    }
+}

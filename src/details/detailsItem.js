@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const DetailsPokemon = (props) => {
     return(
         <div className="details_pokemon">
-            <div className="details_pokemon_head">
+            <div className="title_pokemon_head">
                 <Link to="/"><img src="/img/left-arrow.png" alt="arrow" /></Link>
                 <h2>{props.capitalizeFirstLetter(props.name)}</h2>
             </div>
