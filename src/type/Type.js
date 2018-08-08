@@ -16,13 +16,13 @@ class Type extends React.Component {
         document.getElementsByTagName('body')[0].className = 'page-type';
     }
 
-    componentWillUnmount() {
-        // document.getElementsByTagName('body')[0].className = '';
-        // this.props.detailsStore.toggleMoves = false;
-        // this.props.detailsStore.toggleSprite = false;
-        // this.props.detailsStore.toggleAbilities = false;
-        // this.props.detailsStore.toggleStats = false;
 
+    componentDidUpdate(){
+        if (this.props.typeStore.urlChange > 0) {
+            this.props.typeStore.urlChange = 0;
+            const idType = this.getIdEvent();
+            this.props.getType(idType);
+        }
     }
     capitalizeFirstLetter(string) {
         var capitalizeString = string.charAt(0).toUpperCase() + string.slice(1);
@@ -51,6 +51,10 @@ class Type extends React.Component {
         }
     }
 
+    updateUrl(){
+        this.props.typeStore.urlChange = this.props.typeStore.urlChange + 1;
+    }
+
 
     render() {
         if (this.props.typeStore.isLoading === false){
@@ -64,6 +68,7 @@ class Type extends React.Component {
                         capitalizeFirstLetter={this.capitalizeFirstLetter.bind(this)}
                         goBack={this.goBack.bind(this)}
                         getNumberPokemon={this.getNumberPokemon.bind(this)}
+                        updateUrl={this.updateUrl.bind(this)}
                     />
                 </div>
             );

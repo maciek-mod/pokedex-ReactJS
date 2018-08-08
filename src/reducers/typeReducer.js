@@ -3,7 +3,8 @@ import * as constants from '../constants';
 const initialState = {
     typeList: [],
     isLoading: true,
-    isError: false
+    isError: false,
+    urlChange: 0
 };
 
 export function typeReducer(state = initialState, action){

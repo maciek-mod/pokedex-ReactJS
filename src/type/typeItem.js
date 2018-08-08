@@ -17,7 +17,7 @@ const TypePokemon = (props) => {
                             {
                                 Object.keys(props.damage_relations[item]).map( (el, i) => {
                                     return (
-                                        <a key={i} href={"/type" + props.damage_relations[item][i].url.match(/\/\d+/)}><p className={props.damage_relations[item][i].name}>{props.damage_relations[item][i].name}</p></a>
+                                        <Link onClick={props.updateUrl} key={el + i} to={"/type" + props.damage_relations[item][i].url.match(/\/\d+/)}><p className={props.damage_relations[item][i].name}>{props.damage_relations[item][i].name}</p></Link>
                                     );
                                 })
                             }
