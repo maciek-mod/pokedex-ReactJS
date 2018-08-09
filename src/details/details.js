@@ -11,13 +11,6 @@ class Details extends React.Component {
     }
 
     componentDidMount() {
-        // fetch('https://pokeapi.co/api/v2/pokemon/' + this.getIdEvent() + '/')
-        // .then(response => response.json())
-        // .then(data => {
-        //     this.setState({pokemon: data, isLoadingDetails: false});
-        // }).catch(function(error) {
-        //     console.log(error);
-        // });
         const idPokemon = this.getIdEvent();
         this.props.getDetails(idPokemon);
         document.getElementsByTagName('body')[0].className = 'page-details';

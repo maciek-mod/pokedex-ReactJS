@@ -14,16 +14,17 @@ class Type extends React.Component {
         const idType = this.getIdEvent();
         this.props.getType(idType);
         document.getElementsByTagName('body')[0].className = 'page-type';
+
     }
 
-
     componentDidUpdate(){
-        if (this.props.typeStore.urlChange > 0) {
-            this.props.typeStore.urlChange = 0;
+        if (this.props.typeStore.urlId !== null &&  this.props.typeStore.urlId !== this.props.match.params.typetId) {
+            this.props.typeStore.urlId = null;
             const idType = this.getIdEvent();
             this.props.getType(idType);
         }
     }
+
     capitalizeFirstLetter(string) {
         var capitalizeString = string.charAt(0).toUpperCase() + string.slice(1);
         if (/_/g.test(capitalizeString)) {
@@ -51,13 +52,17 @@ class Type extends React.Component {
         }
     }
 
-    updateUrl(){
-        this.props.typeStore.urlChange = this.props.typeStore.urlChange + 1;
+    getNumberType(numberPokemon){
+        var getNumber = numberPokemon;
+            getNumber = getNumber.match(/\/\d+/)[0].replace(/\//g, '');
+        return getNumber;
     }
-
 
     render() {
         if (this.props.typeStore.isLoading === false){
+            if (this.props.typeStore.urlId === null) {
+                this.props.typeStore.urlId = this.props.match.params.typetId;
+            }
             const {name, damage_relations, pokemon} = this.props.typeStore.typeList;
             return (
                 <div>
@@ -68,7 +73,8 @@ class Type extends React.Component {
                         capitalizeFirstLetter={this.capitalizeFirstLetter.bind(this)}
                         goBack={this.goBack.bind(this)}
                         getNumberPokemon={this.getNumberPokemon.bind(this)}
-                        updateUrl={this.updateUrl.bind(this)}
+                        actualyId={this.props.match.params.typetId}
+                        getNumberType={this.getNumberType.bind(this)}
                     />
                 </div>
             );

@@ -22,13 +22,7 @@ class Events extends React.Component {
         const value = event.currentTarget.value;
         this.props.filterEvents(value);
     }
-    onShowDetails(event) {
-        event.preventDefault();
-        console.log(event.currentTarget.getAttribute("data-id"));
-        // this.setState({
-        //     filter: value
-        // });
-    }
+
     capitalizeFirstLetter(string) {
         var capitalizeString = string.charAt(0).toUpperCase() + string.slice(1);
         if (/-/g.test(capitalizeString)) {
@@ -52,7 +46,7 @@ class Events extends React.Component {
     render() {
         return (
             <Loading isLoading={this.props.eventsStore.isLoading}>
-                <div className={"pokemon_list_container" + " " + (this.props.eventsStore.toggleClass? 'slide_down': '')}>
+                <div className={"pokemon_list_container" + " " + (this.props.eventsStore.toggleClass ? 'slide_down': '')}>
                     <div className={"search_pokemon" + " " + (
                             this.props.eventsStore.toggleClass
                             ? ''
@@ -70,7 +64,7 @@ class Events extends React.Component {
                         {
                             this.props.eventsStore.data.map(item => {
                                 if (item.pokemon_species.name.indexOf(this.props.eventsStore.filter.toLowerCase()) > -1) {
-                                    return <EventItem onShowDetails={this.onShowDetails.bind(this)} capitalizeFirstLetter={this.capitalizeFirstLetter.bind(this)} item={item} key={item.entry_number}/>
+                                    return <EventItem  capitalizeFirstLetter={this.capitalizeFirstLetter.bind(this)} item={item} key={item.entry_number}/>
                                 }
                                 return null;
                             })

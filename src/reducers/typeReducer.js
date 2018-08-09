@@ -4,7 +4,8 @@ const initialState = {
     typeList: [],
     isLoading: true,
     isError: false,
-    urlChange: 0
+    urlChange: 0,
+    urlId: null
 };
 
 export function typeReducer(state = initialState, action){

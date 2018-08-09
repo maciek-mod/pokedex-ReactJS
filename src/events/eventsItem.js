@@ -11,7 +11,6 @@ const EventItem = (props) => {
     }
     return(
         <li>
-            {/* <a onClick={props.onShowDetails} data-id={props.item.entry_number}><strong>{props.item.entry_number}</strong> {props.item.pokemon_species.name}</a> <br/> */}
             <Link to={"/details/" + props.item.entry_number}><span>{number}</span> {props.capitalizeFirstLetter(props.item.pokemon_species.name)}</Link>
 
         </li>
@@ -19,7 +18,7 @@ const EventItem = (props) => {
 };
 
 EventItem.propTypes = {
-    onShowDetails: PropTypes.func.isRequired
+    item: PropTypes.object.isRequired
 };
 
 export default EventItem;
