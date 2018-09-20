@@ -59,7 +59,7 @@ class Type extends React.Component {
     }
 
     render() {
-        if (this.props.typeStore.isLoading === false){
+        if (this.props.typeStore.isLoading === false && this.props.typeStore.isError === false){
             if (this.props.typeStore.urlId === null) {
                 this.props.typeStore.urlId = this.props.match.params.typetId;
             }

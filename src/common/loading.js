@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Loading = (props) => {
+    console.log(props.isError);
     if (props.isLoading === true && props.isError === false) {
         return (
             <div className="loading_container">
