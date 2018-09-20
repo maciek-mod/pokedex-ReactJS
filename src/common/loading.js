@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Loading = (props) => {
-    if (props.isLoading) {
+    if (props.isLoading === true && props.isError === false) {
         return (
             <div className="loading_container">
                 <div className="pokeball">
@@ -9,9 +9,16 @@ const Loading = (props) => {
                 </div>
             </div>
         );
-    } else {
+    } else if(props.isLoading === false && props.isError === false) {
         return props.children;
+    } else if (props.isLoading === false && props.isError === true) {
+        return (
+            <div className="loading_container">
+                <h1> error, please try again later </h1>
+            </div>
+        );
     }
+
 };
 
 
