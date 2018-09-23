@@ -29,7 +29,7 @@ export function getTypeError(error){
 export function getType(idType){
     return (dispatch) => {
         dispatch(getTypeStart());
-        fetch('https://pokeapi.co/api/v2/type/' + idType)
+        fetch('http://pokeapi.salestock.net/api/v2/type/' + idType)
         .then(response => response.json())
         .then(data => dispatch(getTypeSuccess(data)))
         .catch(error => dispatch(getTypeError(error)));

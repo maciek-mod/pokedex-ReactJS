@@ -37,7 +37,7 @@ export function getEventsError(error){
 export function getEvents(){
     return (dispatch) => {
         dispatch(getEventsStart());
-        fetch('https://pokeapi.co/api/v2/pokedex/1/')
+        fetch('http://pokeapi.salestock.net/api/v2/pokedex/1/')
         .then(response => response.json())
         .then(data => dispatch(getEventsSuccess(data.pokemon_entries)))
         .catch(error => dispatch(getEventsError(error)));
