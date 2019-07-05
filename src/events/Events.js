@@ -45,7 +45,7 @@ class Events extends React.Component {
 
     render() {
         return (
-            <Loading isLoading={this.props.eventsStore.isLoading}>
+            <Loading isLoading={this.props.eventsStore.isLoading} isError={this.props.eventsStore.isError}>
                 <div className={"pokemon_list_container" + " " + (this.props.eventsStore.toggleClass ? 'slide_down': '')}>
                     <div className={"search_pokemon" + " " + (
                             this.props.eventsStore.toggleClass
@@ -73,6 +73,7 @@ class Events extends React.Component {
                 </div>
                 {/* <ErrorItem isError={this.props.eventsStore.isError}/> */}
             </Loading>
+
         );
     }
 };

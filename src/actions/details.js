@@ -29,7 +29,7 @@ export function getDetailsError(error){
 export function getDetails(idPokemon){
     return (dispatch) => {
         dispatch(getDetailsStart());
-        fetch('https://pokeapi.co/api/v2/pokemon/' + idPokemon)
+        fetch('http://pokeapi.salestock.net/api/v2/pokemon/' + idPokemon)
         .then(response => response.json())
         .then(data => dispatch(getDetailsSuccess(data)))
         .catch(error => dispatch(getDetailsError(error)));

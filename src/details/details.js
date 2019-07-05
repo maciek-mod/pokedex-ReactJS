@@ -58,7 +58,7 @@ class Details extends React.Component {
     }
 
     render() {
-        if (this.props.detailsStore.isLoading === false) {
+        if (this.props.detailsStore.isLoading === false && this.props.detailsStore.isError === false) {
             const {abilities, name, sprites, weight, types, moves, id, height ,stats} = this.props.detailsStore.pokemon;
             const toggleClass = this.props.detailsStore;
             return (
